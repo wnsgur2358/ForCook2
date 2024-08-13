@@ -1,0 +1,43 @@
+/* static/css/styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+h1 {
+  color: #333;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+.food-info {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.food-info h2 {
+  color: #0056b3;
+}
+
+.food-info h3 {
+  margin-top: 15px;
+  color: #333;
+}
+
+.food-image {
+  /*text-align: center;*/
+  margin-bottom: 20px;
+}
+
+.food-image img {
+  width: 300px;  /* 이미지 너비를 300px로 고정 */
+  height: 200px; /* 이미지 높이를 200px로 고정 */
+  object-fit: cover;  /* 비율에 맞춰 조정 */
+  border-radius: 8px;
+}

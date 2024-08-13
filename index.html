@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음식 정보 조회</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>음식 정보 조회</h1>
+    <form method="POST">
+        <label for="food_name">음식 이름을 입력하세요:</label>
+        <input type="text" id="food_name" name="food_name" required>
+        <button type="submit">검색</button>
+    </form>
+
+    {% if food_info %}
+    <div class="food-info">
+        <h2>{{ request.form.get('food_name') }}에 대한 정보</h2>
+
+        <!-- 음식 이미지 -->
+        <div class="food-image">
+            <img src="{{ url_for('static', filename='images/' ~ food_info['이미지']) }}" alt="{{ request.form.get('food_name') }} 이미지">
+        </div>
+
+        <h3>재료:</h3>
+        <ul>
+            {% for ingredient, amount in food_info['재료'].items() %}
+            <li>{{ ingredient }}: {{ amount }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>레시피:</h3>
+        <ol>
+            {% for step in food_info['레시피'] %}
+            <li>{{ step }}</li>
+            {% endfor %}
+        </ol>
+
+        <h3>영양성분:</h3>
+        <ul>
+            {% for nutrient, value in food_info['영양성분'].items() %}
+            <li>{{ nutrient }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% elif request.method == 'POST' %}
+    <p>해당 음식에 대한 정보가 없습니다.</p>
+    {% endif %}
+</body>
+</html>
+
